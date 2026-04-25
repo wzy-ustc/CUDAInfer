@@ -53,6 +53,7 @@ set(CORE_SOURCES
     src/inference/tokenizer.cpp
     src/inference/sampler.cpp
     src/inference/engine.cpp
+    src/inference/paged_kv_cache.cpp
     src/utils/profiler.cpp
 )
 
@@ -135,6 +136,10 @@ add_test(NAME test_tensor COMMAND test_tensor)
 add_executable(test_gemm tests/test_gemm.cpp)
 target_link_libraries(test_gemm PRIVATE ntransformer_lib)
 add_test(NAME test_gemm COMMAND test_gemm)
+
+add_executable(test_paged_kv_cache tests/test_paged_kv_cache.cpp)
+target_link_libraries(test_paged_kv_cache PRIVATE ntransformer_lib)
+add_test(NAME test_paged_kv_cache COMMAND test_paged_kv_cache)
 
 if(USE_GPUNVME)
     add_executable(test_nvme_layer tests/test_nvme_layer.cu)
