@@ -146,6 +146,10 @@ add_executable(test_continuous_batching tests/test_continuous_batching.cpp)
 target_link_libraries(test_continuous_batching PRIVATE ntransformer_lib)
 add_test(NAME test_continuous_batching COMMAND test_continuous_batching)
 
+add_executable(test_chunked_prefill tests/test_chunked_prefill.cpp)
+target_link_libraries(test_chunked_prefill PRIVATE ntransformer_lib)
+add_test(NAME test_chunked_prefill COMMAND test_chunked_prefill)
+
 if(USE_GPUNVME)
     add_executable(test_nvme_layer tests/test_nvme_layer.cu)
     target_link_libraries(test_nvme_layer PRIVATE ntransformer_lib)
