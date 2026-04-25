@@ -55,6 +55,7 @@ set(CORE_SOURCES
     src/inference/engine.cpp
     src/inference/paged_kv_cache.cpp
     src/inference/request_scheduler.cpp
+    src/inference/prefix_kv_cache.cpp
     src/utils/profiler.cpp
 )
 
@@ -149,6 +150,10 @@ add_test(NAME test_continuous_batching COMMAND test_continuous_batching)
 add_executable(test_chunked_prefill tests/test_chunked_prefill.cpp)
 target_link_libraries(test_chunked_prefill PRIVATE ntransformer_lib)
 add_test(NAME test_chunked_prefill COMMAND test_chunked_prefill)
+
+add_executable(test_prefix_kv_cache tests/test_prefix_kv_cache.cpp)
+target_link_libraries(test_prefix_kv_cache PRIVATE ntransformer_lib)
+add_test(NAME test_prefix_kv_cache COMMAND test_prefix_kv_cache)
 
 if(USE_GPUNVME)
     add_executable(test_nvme_layer tests/test_nvme_layer.cu)
